@@ -21,7 +21,7 @@ function convertidor(pesos, dolar, euro, yen, libra, moneda) {
             return error;
             break;
     }
-}
+};
 
  
 let salir = "1";
@@ -34,3 +34,32 @@ while(salir == "1"){
     salir=prompt("1 - Para seguir convirtiendo \n 2 - para salir ");
 }
 
+//Array
+
+const monedas=[
+
+    {
+        moneda:"dolar",
+        cotizacion:198.5,
+        origen:"EEUU",
+    },
+    {
+        moneda:"euro",
+        cotizacion:123.28,
+        origen:"Union Europea",
+    },
+    {
+        moneda:"yen",
+        cotizacion:0.90,
+        origen:"Japon",
+    },
+    {
+        moneda:"libra",
+        cotizacion:144.08,
+        origen:"EEUU",
+    }, 
+];
+
+for(const moneda of monedas){
+    console.log(moneda)
+};
