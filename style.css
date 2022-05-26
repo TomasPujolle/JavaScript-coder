@@ -1,0 +1,43 @@
+.oculto{
+    display: none;
+}
+
+#mostrarMenu{
+    margin-bottom: 1em;
+}
+
+#btn{
+    margin-top: 1em;
+}
+
+.tarjeta {
+    background-color: lightgrey;
+    margin: 1vh;
+}
+
+.darkMode {
+    background-color: gray;
+}
+
+.titulo{
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+#menuConvertidor{
+    display: flex;
+    justify-content: center;
+}
+
+.contenedor1{
+    display: flex;
+    justify-content: center;
+    margin: 3rem;
+}
+
+
+#formulario{
+    flex-direction: column;
+    width: 20%;
+}
