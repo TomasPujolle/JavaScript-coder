@@ -15,8 +15,8 @@
     margin: 1vh;
 }
 
-.darkMode {
-    background-color: gray;
+.dark{
+    background-color: rgb(83, 81, 81);
 }
 
 .titulo{
