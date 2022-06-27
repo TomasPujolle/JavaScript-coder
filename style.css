@@ -2,42 +2,83 @@
     display: none;
 }
 
-#mostrarMenu{
-    margin-bottom: 1em;
-}
-
-#btn{
-    margin-top: 1em;
-}
-
-.tarjeta {
-    background-color: lightgrey;
-    margin: 1vh;
-}
-
-.dark{
-    background-color: rgb(83, 81, 81);
-}
-
 .titulo{
     text-align: center;
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
 
+#mostrarMenu{
+    margin-bottom: 1em;
+
+    }
+
+.dark{
+    background-color: rgb(83, 81, 81);
+}
+
+.divCotiz{
+    background-color: blanchedalmond;
+    border-style: solid;
+    margin-top: 2rem;
+    
+}
+
 #menuConvertidor{
-    display: flex;
-    justify-content: center;
+    margin-top: 5rem;
 }
 
-.contenedor1{
-    display: flex;
-    justify-content: center;
-    margin: 3rem;
+#btn{
+    margin-top: 2rem;
+    margin-left: 15rem;
+
 }
 
 
-#formulario{
-    flex-direction: column;
-    width: 20%;
+.billetera{
+    margin-top: 5rem;
+}
+
+.DOT{
+    margin-left: 1rem;
+}
+
+.DBT{
+    margin-left: 2rem;
+}
+
+.ET{
+    margin-left: 4rem;
+}
+
+.RT{
+    margin-left: 4rem;
+}
+
+#tabla1{
+    background-color: rgb(96, 145, 106);
+    border-style: solid;
+    width: 70%;
+    padding: 1rem;
+}
+
+#tabla2{
+    background-color: rgb(96, 145, 106);
+    border-style: solid;
+    width: 70%;
+    padding: 1rem;
+}
+
+#tabla3{
+    background-color: rgb(96, 145, 106);
+    border-style: solid;
+    width: 70%;
+    padding: 1rem;
+}
+
+#tabla4{
+    background-color: rgb(96, 145, 106);
+    border-style: solid;
+    width: 70%;
+    padding: 1rem;
 }

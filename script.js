@@ -1,102 +1,140 @@
+window.onload=()=>{
+  obtenervalorDolarOficial();
+  obtenerValorDolarBlue();
+  obtenerValorEuro();
+  obtenerValorReal();
+}
+
+//---------------- array de monedas---------------
+
+const listaMonedas=[];
+console.log(listaMonedas);
+
+const listaDolaroficial=[];
+console.log(listaDolaroficial);
+
+const listaDolarblue=[];
+console.log(listaDolarblue);
+
+const listaEuro=[];
+console.log(listaEuro);
+
+const listaReal=[];
+console.log(listaReal);
+
+//--------------CONSTRUCTOR DE MONEDAS---------------
+
 function Moneda (nombre, cotizacion,) {
     this.nombre = nombre;
     this.cotizacion= cotizacion;
     }
 
-const dolar = new Moneda ("dolar",200);
-const dolarAJson=JSON.stringify(dolar);
-localStorage.setItem("DolaresJSON", dolarAJson);
+    const dolaroficial = new Moneda("dolaroficial",123);
+    listaMonedas.push(dolaroficial);
+    const dolarBLue = new Moneda("dolarblue",221);
+    listaMonedas.push(dolarBLue);
+    const euro = new Moneda("euro", 126);
+    listaMonedas.push(euro);
+    const real = new Moneda ("real", 22);
+    listaMonedas.push(real);
 
-const euro = new Moneda ("euro", 124);
-const euroAJson=JSON.stringify(euro);
-localStorage.setItem("EuroJSON", euroAJson);
-
-const yen = new Moneda ("yen", 0.90);
-const yenAJson=JSON.stringify(yen);
-localStorage.setItem("YenesJSON", yenAJson);
-
-const libra = new Moneda ("libra", 145);
-const libraAJson=JSON.stringify(libra);
-localStorage.setItem("LibrasJSON", libraAJson);
+ 
 
 
 
-    
 let formulario = document.getElementById("formulario");
 formulario.addEventListener("submit", convertidor);
 
+//-----------FUNCION PRINCIPAL---------------
 
-
- function convertidor (e) {
+function convertidor (e) {
      
-     e.preventDefault();
-     let total= 0
-    let pesos = document.getElementById("pesos").value;
-    let moneda = document.getElementById("moneda").value;
+  e.preventDefault();
+    let total= 0
+    let pesos = parseInt(document.getElementById("pesos").value);
+    let monedaBuscada = document.getElementById("moneda").value;
+    let moneda = listaMonedas.find( moneda => moneda.nombre == monedaBuscada );
+    let resultado= pesos / moneda.cotizacion;
 
-     switch (moneda) {
-         case "dolar":
-            let resultadoD = pesos / dolar.cotizacion ;
-              listaDolar.push(resultadoD);
-              console.log(listaDolar);
-              for (const valor of listaDolar) {
-                total += resultadoD;
-              }
-              console.log("Dolares totales $" + total);
-              localStorage.setItem("Dolares", listaDolar);
-            break;
-         case "euro":
-             let resultadoE = pesos / euro.cotizacion ;
-              listaEuro.push(resultadoE);
-              console.log(listaEuro);
-              for (const valor of listaEuro) {
-                total += resultadoE;
-              }
-              console.log("Euros totales $" + total);
-              localStorage.setItem("Euros", listaEuro);
-             break;
-         case "yen":
-             let resultadoY = pesos / yen.cotizacion;
-             listaYen.push(resultadoY);
-             console.log(listaYen);
-             for (const valor of listaYen) {
-                total += resultadoY;
-              }
-              console.log("Yenes totales $" + total);
-              localStorage.setItem("Yenes", listaYen);
-             break;
-         case "libra":
-             let resultadoL = pesos / libra.cotizacion;
-             listaLibra.push(resultadoL);
-             console.log(listaLibra);
-             for (const valor of listaLibra) {
-                total += resultadoL;
-              }
-              console.log("Libras totales $" + total);
-              localStorage.setItem("Libras", listaLibra);
-             break;
-         default:
-             alert("error, vuelva a intentar");
-             break;
-     }
- };
+    Toastify({
+      text: "Convertiste en "+moneda.nombre,
+      duration: 2000,
+      gravity: 'top',
+      position: 'left',
+  }).showToast();
 
-// array de monedas
+    if (monedaBuscada=="dolaroficial"){
+      listaDolaroficial.push(resultado);
+      console.log(listaDolaroficial);
+      imprimirDolaroficial(resultado);
+      for (const valor of listaDolaroficial) {
+        total += resultado;
+      }
+      console.log("Dolares Oficiales totales $" + total);
+    }else if(monedaBuscada=="dolarblue"){
+      listaDolarblue.push(resultado);
+      console.log(listaDolarblue);
+      imprimirDolarblue(resultado);
+      for (const valor of listaDolarblue) {
+        total += resultado;
+      }
+      console.log("Dolares Blue totales $" + total);
+    }else if(monedaBuscada=="euro"){
+      listaEuro.push(resultado);
+      console.log(listaEuro);
+      imprimirEuro(resultado);
+      for (const valor of listaEuro) {
+       total += resultado;
+      }
+      console.log("Euros totales $" + total);
+    }else if(monedaBuscada=="real"){
+      listaReal.push(resultado);
+      console.log(listaReal);
+      imprimirReal(resultado);
+      for (const valor of listaReal) {
+      total += resultado;
+      }
+      console.log("Real totales $" + total);
+    }
+  };
 
-const listaDolar=[];
-console.log(listaDolar);
+//------FUNCIONES innerHTML---------
 
-const listaEuro=[];
-console.log(listaEuro);
 
-const listaYen=[];
-console.log(listaYen);
+function imprimirDolaroficial(resultado){
+  
+  document.getElementById('tabla1').innerHTML+=`
+    <tr>
+      <td>${resultado}</td>
+    </tr>`;
+};
 
-const listaLibra=[];
-console.log(listaLibra);
+function imprimirDolarblue(resultado){
+  
+  document.getElementById('tabla2').innerHTML+=`
+    <tr>
+      <td>${resultado}</td>
+    </tr>`;
+};
 
-const listaListas=[listaDolar, listaEuro, listaYen, listaLibra];
+function imprimirEuro(resultado){
+  
+  document.getElementById('tabla3').innerHTML+=`
+    <tr>
+      <td>${resultado}</td>
+    </tr>`;
+};
 
+function imprimirReal(resultado){
+  
+  document.getElementById('tabla4').innerHTML+=`
+    <tr>
+      <td>${resultado}</td>
+    </tr>`;
+};
+  
+
+//---------BOTON DARK MODE--------------
 
 let modo=localStorage.getItem("modo")  || "light";
 let botonDarkMode = document.getElementById("mode");
@@ -117,9 +155,11 @@ botonDarkMode.onclick=()=>{
 };
 
 
+//------------- Boton mostrar formulario----------------
 
 function mostrarFormulario() {
     document.getElementById("formulario").classList.toggle("oculto");
+    document.getElementById("cotizacion").classList.toggle("oculto");
 };
 
 let mostrarMenu = document.getElementById("mostrarMenu");
@@ -127,3 +167,36 @@ mostrarMenu.addEventListener("click", () => mostrarFormulario());
 
 
 
+// ----------------------API DE MONEDAS--------------------------
+
+async function obtenervalorDolarOficial() {
+  const URLDOLAR = "https://api-dolar-argentina.herokuapp.com/api/dolaroficial";
+  const resp=await fetch(URLDOLAR)
+  const data=await resp.json()
+  document.getElementById("valorDolarOficial").innerHTML+=(`<p align="center"> Dolar Oficial = $ ${data.compra}</p>`);
+  dolarOficialCotiz=data.compra;
+}
+
+async function obtenerValorDolarBlue() {
+  const URLDOLAR = "https://api-dolar-argentina.herokuapp.com/api/dolarblue";
+  const resp=await fetch(URLDOLAR)
+  const data=await resp.json()
+  document.getElementById("valorDolarBlue").innerHTML+=(`<p align="center"> Dolar Blue = $ ${data.compra}</p>`);
+  dolarBlueCotiz=data.compra;
+}
+
+async function obtenerValorEuro() {
+  const URLDOLAR = "https://api-dolar-argentina.herokuapp.com/api/euro/nacion";
+  const resp=await fetch(URLDOLAR)
+  const data=await resp.json()
+  document.getElementById("valorEuro").innerHTML+=(`<p align="center"> Euro = $ ${data.compra}</p>`);
+  euroCotiz=data.compra;
+}
+
+async function obtenerValorReal() {
+  const URLDOLAR = "https://api-dolar-argentina.herokuapp.com/api/real/nacion";
+  const resp=await fetch(URLDOLAR)
+  const data=await resp.json()
+  document.getElementById("ValorReal").innerHTML+=(`<p align="center"> Real = $ ${data.compra}</p>`);
+  realCotiz=data.compra;
+}
